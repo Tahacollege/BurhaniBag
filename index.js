@@ -3,6 +3,14 @@ const app=express();
 const path=require('path')
 const body_parser=require('body-parser');
 const port=process.env.PORT || 4000;
+const cors=require('cors');
+const corsConfig={
+    origin:"*",
+    credential:true,
+    methods:["GET", "POST", "PUT", "DELETE"],
+};
+app.options("", cors(corsConfig));
+app.use(cors(corsConfig));
 const cookieParser=require("cookie-parser");
 var session=require('express-session');
 
