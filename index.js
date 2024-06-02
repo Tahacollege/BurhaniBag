@@ -3,6 +3,8 @@ const app=express();
 const path=require('path')
 const body_parser=require('body-parser');
 const port=process.env.PORT || 4000;
+app.set('view engine','ejs'); 
+app.engine('ejs', require('ejs').__express);
 const cors=require('cors');
 const corsConfig={
     origin:"*",
