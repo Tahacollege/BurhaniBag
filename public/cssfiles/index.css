@@ -377,6 +377,7 @@ a{
     width: 250px;
     height: 170px;
     border-radius: 100%;
+    mix-blend-mode: multiply;
 }
 .benifits_icons>h1{
     text-align: center;

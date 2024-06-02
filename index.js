@@ -12,7 +12,7 @@ const corsConfig={
 app.options("", cors(corsConfig));
 app.use(cors(corsConfig));
 const cookieParser=require("cookie-parser");
-var session=require('express-session');
+var session=require('cookie-session');
 
 //app.use(express.static(__dirname + '/public'));
 app.use(express.static(path.join(__dirname , '/public')));
