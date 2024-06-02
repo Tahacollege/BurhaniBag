@@ -12,20 +12,22 @@ const corsConfig={
 app.options("", cors(corsConfig));
 app.use(cors(corsConfig));
 const cookieParser=require("cookie-parser");
-var session=require('cookie-session');
+var session=require('express-session');
+const MemoryStore = require('memorystore')(session);
 
 //app.use(express.static(__dirname + '/public'));
 app.use(express.static(path.join(__dirname , '/public')));
 app.use(body_parser.json())
 app.use(body_parser.urlencoded({extended:true}))
 app.use(cookieParser())
-app.use(
-    session({
-        secret:"BurhaniBag",
-        resave:false,
-        saveUninitialized:false
-    })
-)
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
+    resave: false,
+    secret: 'keyboard cat'
+}))
 const folder=path.join(__dirname,'htmlfiles')
 const connection=require('./conn');
 const { ObjectId } = require('mongodb');
