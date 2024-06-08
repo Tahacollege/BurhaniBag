@@ -36,7 +36,7 @@ const { ObjectId } = require('mongodb');
 app.get("/",(req,resp)=>{
     if(req.session.username){
         var username=req.session.username
-        resp.render(`${folder}/index.ejs`,{username})
+        resp.render(`./public/htmlfiles/index.ejs`,{username})
     }
     else{
     var username=undefined
