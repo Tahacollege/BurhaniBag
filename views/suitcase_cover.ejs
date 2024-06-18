@@ -1,17 +1,14 @@
 <html>
     <head>
-        <title>Products</title>
+        <title> Transparent Cover</title>
         <link rel="stylesheet" type='text/css' href="../cssfiles/index.css">
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-        
         <script>
+            
             function hello(){
                 window.location.href='/'
-            }
-            function buy(id){
-                alert(id)
             }
             function validate(){
                 var password=document.getElementById('password').value
@@ -19,6 +16,46 @@
                 if(password!=confirm_password){
                     alert('Password And Confirmed Password Do Not Match')
                 }
+            }
+            function covert(){
+                var cm=document.getElementById('in').value
+                var Inches=Math.floor(cm*0.394)
+                var h1=document.createElement('h2')
+                var text=document.createTextNode(Inches)
+                h1.appendChild(text)
+                document.getElementById('cm_to_inch').appendChild(h1)
+                setTimeout(()=>{
+                    document.getElementById('cm_to_inch').removeChild(h1)
+                },3000)
+            }
+            function calculate(){
+                var inch=document.getElementById('inch').value
+                inch=Number(inch)+1
+                var type=document.getElementById('select').value
+                var prize;
+                if(type=='Double Chained [130 extra for size upto 27inch and 150 extra for other]'){
+                    if(inch>=28){
+                    prize=(inch*19)+150
+                    }
+                    else{
+                        prize=(inch*19)+130
+                    }
+                }else{
+                    prize=(inch*19)
+                }
+                var sizecontainer=document.getElementById('sizecontainer')
+                var h11=document.createElement('h1')
+                var text1=document.createTextNode("Prize:- ")
+                h11.appendChild(text1)
+                var h1=document.createElement('h1')
+                var text=document.createTextNode(prize)
+                h1.appendChild(text)
+                sizecontainer.appendChild(h11)
+                sizecontainer.appendChild(h1)
+                setInterval(()=>{
+                    sizecontainer.removeChild(h1)
+                    sizecontainer.removeChild(h11)
+                },5000)
             }
             function responsive_view(){
                 var list=document.getElementById('list')
@@ -29,7 +66,7 @@
                 var resp_nav=document.getElementById('resp_nav')
                 resp_nav.style.display=''
             }
-        </script>
+            </script>
     </head>
     <body>
         <center>
@@ -42,17 +79,17 @@
                 <img id="icon" src="../bags/icon.png" alt="Burhani Icon" onclick="hello()">
                 <img id="list" src="../bags/list.png" onclick="responsive_view()" >
                 <form method="post" action="/Search">
-                    <input type="search" name="search" class="nav_elem_search " >
-                    <button id="search_logo">🔍</button>
-                </form>
+                <input type="search" name="search" class="nav_elem_search" >
+                <button id="search_logo">🔍</button>
+            </form>
                 <%if(username){%>
                     <a href="/user"><img style='width: 50px; height: 50px; margin-top: 5px; margin-left: 25px; cursor: pointer;'src="../bags/user.png"></a>
                     <button class="nav_elem_right" id="logout" ><a href="/logout">LogOut</a></button>
-                    
                 <%}else{%>
                 <button class="nav_elem_right" onclick="loginDialog.showModal()">Login</button>
                 <button class="nav_elem_right" onclick="SignupDialog.showModal()">SignUp</button>
                 <%}%>
+                
             </div>
         </center>
         <dialog id="loginDialog" class="dialogs">
@@ -112,30 +149,45 @@
             
         </div>
         
-        <div id="product_container">
-            <% if(result.length>0){%>
-            <% for (let info of result){ %>
-                <% let name=info.name%>
-                        <% let pname=name.split("_")%>
-                        <% if(pname.includes('side') || pname.includes('whole') || pname.includes('top') || pname.includes('back') ){%>
-                        <% continue%>
-                        <%}%>
-                        <% let fullname=""%>
-                <div class="products_contain">
-                    <img id='products_image' src="../bags/<%=info.foldername%>/<%= info.name%>.<%=info.formate%> ">
-                    <% for(let pn=0;pn< pname.length;pn++){%>
-                        <% fullname+= pname[pn]+" "%>
-                        <%}%>
-                        <h1 id="products_name"><%=fullname%></h1>
-                    <h3 id="prize">Prize:- <%=info.prize%></h3>
-                    <button ><a href="/product?id=<%=info._id%>&cid=<%=info.id%>">ShopNow</a></button>
-                </div>
-            <%}%>
-            <%}else{%>
-                <h1 style="text-align: center;">No Result Found!!!</h1> 
-                <%}%>
+        <div id="coversizechart">
+            <img id="coversizechartimg" src="../bags/Standard-Suitcase-Sizes.jpg">
+        </div>
+        <h1 style="text-align: center; background-color: rgba(209, 212, 215,0.6);">Types Of Suitcase According To Chains</h1>
+        <div  id="resp">
+        <h1  id="dc">Double Chained </h1>
+        <h1 id="sc">Single Chained</h1>
+    </div>
+        <div id="suitcasetypes">
+            <div class="suitcasetypesimgscontainer">
+                <img src="../bags/dual_chain_suitcase.jpg">
+            </div>
+            <div class="suitcasetypesimgscontainer">
+                <img src="../bags/single_zip_suitcase.webp">
+            </div>
+        </div>
+        <dialog id="cm_to_inch">
+            <center>
+                <button id="close_btn" onclick="cm_to_inch.close()">X</button>
+            <h2>Suitcase Lenght In cm:- </h2><input type="number" name="cmsize" id="in"><br>
+            <button id="submit" onclick="covert()">Convert</button>
+           
+        </center>
+        </dialog>
+        <div id="sizecontainer">
+            <center>
+        <h1>Suitcase Lenght In Inches:- </h1>
+        <h3>Cover Is Made By ₹19/-Inch And Extra 1-Inch Is Addedd For Sewing Purpose</h3>
+        <input type="number" name="size" class="inputs" id="inch"><br>
+        <select class="inputs" id="select">
+            <option>Select Your Suitcase Type</option>
+            <option>Single Chained</option>
+            <option>Double Chained [130 extra for size upto 27inch and 150 extra for other]</option>
+        </select><br>
+        <h2 style="text-decoration: underline; cursor: pointer;" onclick="cm_to_inch.showModal()">Want To Convert Centimeter To Inches??</h2>
+        <button id="submit" onclick="calculate()">Calculate Prize</button>
 
-             </div>
-        <%- include('footer.ejs')%>
+    </center>
+    </div>
+    <%-include('footer.ejs')%>
     </body>
 </html>

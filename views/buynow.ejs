@@ -2,8 +2,9 @@
     <head>
         <title>Products</title>
         <link rel="stylesheet" type='text/css' href="../cssfiles/index.css">
-        <meta charset="UTF-8">
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <script>
             function hello(){
@@ -109,11 +110,11 @@
                 <%for(var p=0;p< sm_pname.length;p++){%>
                     <%sm_fullname+=sm_pname[p]+" "%>
                 <%}%><br><br>
-                    <h1 style="text-transform: capitalize;"> product-name:<%=sm_fullname%></h1>
-                    <h1 style="text-transform: capitalize;"> product-prize:<%=data.prize%></h1>
-                    <h1 style="text-transform: capitalize;"> product-color:<%=data.color%></h1>
-                    <h1 style="text-transform: capitalize;"> product-quantity:<%=count%></h1>
-                    <h1 style="text-transform: capitalize;"> Total-Prize:₹<%=totalamount%></h1>
+                    <h1 style="margin-top: 30px;text-transform: capitalize; font-size: x-large;"> product-name:<%=sm_fullname%></h1>
+                    <h1 style="margin-top: 30px;text-transform: capitalize; font-size: x-large;"> product-prize:<%=data.prize%></h1>
+                    <h1 style="margin-top: 30px;text-transform: capitalize; font-size: x-large;"> product-color:<%=data.color%></h1>
+                    <h1 style="margin-top: 30px;text-transform: capitalize; font-size: x-large;"> product-quantity:<%=count%></h1>
+                    <h1 style="margin-top: 30px;text-transform: capitalize; font-size: x-large;"> Total-Prize:₹<%=totalamount%></h1>
                     <button id="submit" style="width: 200px;" onclick="quantitymodify.showModal()">ChangeQuantity??</button>
                 </center>
             </div>
@@ -136,8 +137,8 @@
                         </center>
                     </form>
                     <%}else{%>
-                        <h1>Address Details</h1>
                         <br><br>
+                        <h1>Address Details</h1>
                         <h1>Number:- <%=userinfo.number%></h1>
                         <h1>Address:- <%=userinfo.address%></h1>
                         <h1>Landmark:- <%=userinfo.landmark%></h1>

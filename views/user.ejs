@@ -2,7 +2,7 @@
     <head>
         <title>User Page</title>
         <link rel="stylesheet" type='text/css' href="../cssfiles/index.css">
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         
@@ -64,11 +64,10 @@
         
         <div id="user">
             <div class="user_details">
-                <img id='usericon' src="../bags/user.png">
+                <img id='usericon' src="../bags/burhani_logo_2.png">
             </div>
             <div class="user_details">
                 <h1>User Details</h1>
-            <br><br><br>
                     <h1>Username:- <%=username%></h1>
                     <h1>email:- <%=userinfo.email%></h1>
                     <h1 style="text-transform: none;">Password:- <%=userinfo.password%></h1>
@@ -102,7 +101,6 @@
                 </form>
                 <%}else{%>
                     <h1>Address Details</h1>
-                    <br><br>
                     <h1>Number:- <%=userinfo.number%></h1>
                     <h1>Address:- <%=userinfo.address%></h1>
                     <h1>Landmark:- <%=userinfo.landmark%></h1>
@@ -134,7 +132,7 @@
                 <% var len=cart_prs.length%>
                 <% for (var i=0;i< len; i++){ %>
                     
-            <div class="similar_products">
+            <div class="similar_products_user">
                 <img class='similar_products_image' src="../bags/<%=cart_prs[i].foldername%>/<%= cart_prs[i].name%>.<%=cart_prs[i].format%> ">
                     <%var sm_name=cart_prs[i].name%>
                     <% var Prize=cart_prs[i].prize%>
@@ -150,12 +148,7 @@
                     <form method="post" action="/buynow">
                         <input type="hidden" name="id" value="<%=cart_prs[i]._id%>">
                         <input type="hidden" name="collection_id" value="<%=cart_prs[i].id%>">
-                    <button style="width: 100px;
-                    height: 30px;
-                    background-color: rgba(202,203,201,255,0);
-                    border-radius: 20%;
-                    font-weight: 900;
-                    cursor: pointer;">BuyNow</button>
+                    <button class="similar_products_btns">BuyNow</button>
                     </form>
                     <a href="/delete_from_cart?pid=<%=cart_prs[i]._id%>"><img src="../bags/dustbin.png" style="width: 30px; height: 30px; margin-top: -50px; margin-left: 250px; cursor: pointer;"></a>
             </div>
