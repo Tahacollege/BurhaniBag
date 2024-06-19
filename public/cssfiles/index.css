@@ -618,6 +618,7 @@ i{
 }
 .user_details{
     padding-top: 15px;
+    margin-top: -15px;
     width: 500px;
     height: 450px;
     margin-left: 10px;
@@ -724,6 +725,7 @@ background-color: black;
 }
 #sbtn{
     width: 100px;
+    font-weight: bold;
     height: 30px;
     background-color: rgba(202,203,201,255);
     border-radius: 20px;
