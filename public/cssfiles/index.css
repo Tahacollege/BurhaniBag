@@ -1286,7 +1286,7 @@ background-color: black;
     flex-direction: column;
     padding: 10px;
     margin-bottom: 10px;
-    margin-left: -10px;
+    margin-left: 0px;
 }
     /*Product Page css ends*/
     /*Suitcase cover css start*/
